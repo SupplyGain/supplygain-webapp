@@ -35,3 +35,7 @@ If you wish to serve the production build locally:
 ## Connex Initialization
 
 This DApp uses `@vechain/dapp-kit-react` to initialise connex and interact with wallets
+
+## References
+
+This DApp is based on Vechain's veworld-dapp github repository which can be found at: [https://github.com/vechain/veworld-dapp](https://github.com/vechain/veworld-dapp). 
