@@ -1,16 +1,9 @@
-# VeWorld Sample DApp
-
-A sample DApp that demonstrates how to create Connex instances for VeWorld <b>OR</b> Sync2.
-
-This DApp was built with create-react-app
+# Supply gain hackathon app 
+Leveraging Web3 to effect changes to sourcing automotive EV batteries
 
 ## Available Scripts
 
 In the project directory, you can run:
-
-### `cp .env.example .env`
-
-Add the environment variables in your .env file.
 
 ### `yarn start`
 
