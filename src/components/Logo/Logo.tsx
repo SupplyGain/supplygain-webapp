@@ -4,8 +4,8 @@ import React from "react"
 type IIMage = HTMLChakraProps<"img">
 
 export const VechainLogo: React.FC<IIMage> = ({ ...props }) => {
-  const lightModeUrl = process.env.PUBLIC_URL + "/images/logo/vechain.png"
-  const darkModeUrl = process.env.PUBLIC_URL + "/images/logo/vechain_white.png"
+  const lightModeUrl = process.env.PUBLIC_URL + "/images/logo/logo512.png"
+  const darkModeUrl = process.env.PUBLIC_URL + "/images/logo/logo512.png"
   const logoUrl = useColorModeValue(lightModeUrl, darkModeUrl)
   return (
     <Image
@@ -19,8 +19,8 @@ export const VechainLogo: React.FC<IIMage> = ({ ...props }) => {
 }
 
 export const VeWorldLogo: React.FC<IIMage> = ({ ...props }) => {
-  const lightModeUrl = process.env.PUBLIC_URL + "/images/logo/veWorld.png"
-  const darkModeUrl = process.env.PUBLIC_URL + "/images/logo/veworld_black.png"
+  const lightModeUrl = process.env.PUBLIC_URL + "/images/logo/logo512.png"
+  const darkModeUrl = process.env.PUBLIC_URL + "/images/logo/logo512.png"
   const logoUrl = useColorModeValue(lightModeUrl, darkModeUrl)
   return (
     <Image

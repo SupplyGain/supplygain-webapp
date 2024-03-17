@@ -3,6 +3,7 @@ import {
   Button,
   Flex,
   Heading,
+  HStack,
   Icon,
   SimpleGrid,
   Text,
@@ -10,122 +11,53 @@ import {
   useDisclosure,
   VStack,
 } from "@chakra-ui/react"
-import React from "react"
-import { useAppState } from "../../../context/WalletContext"
-import { CurrencyDollarIcon, WalletIcon } from "@heroicons/react/24/solid"
 import StyledCard from "../../Shared/StyledCard/StyledCard"
-import TokensDialog from "../../Tokens/TokensDialog/TokensDialog"
-import NFTsDialog from "../../NFTs/NFTsDialog/NFTsDialog"
-import { useWallet } from "@vechain/dapp-kit-react"
 
-interface IFeatureDialog {
-  isOpen: boolean
-  onClose: () => void
-  account: string
-}
-
-interface IFeature {
-  name: string
-  desc: string
-  requireWallet: boolean
-  icon?: React.ReactNode
-  featureDialog: React.FC<IFeatureDialog>
-}
-
-const FeatureList: IFeature[] = [
-  {
-    name: "VIP180 tokens",
-    desc: "See, deploy and mint VIP180 tokens aka fungible tokens! Create a token has never been so easy",
-    icon: <CurrencyDollarIcon />,
-    requireWallet: true,
-    featureDialog: TokensDialog,
-  },
-  {
-    name: "VIP181 tokens",
-    desc: "See, deploy and mint VIP181 tokens aka NFTS!",
-    icon: <CurrencyDollarIcon />,
-    requireWallet: true,
-    featureDialog: NFTsDialog,
-  },
-]
-
-const Features: React.FC = () => {
+const Features = () => {
+  const initialPastEvents = [
+    {
+      eventName: "Sustainable EV Battery Challenge",
+      description:
+        "Find the most sustainable battery technology for electric vehicles.",
+      award: "10,000 USD",
+    },
+    {
+      eventName: "Renewable Energy Innovation Contest",
+      description:
+        "Develop innovative solutions for renewable energy generation and storage.",
+      award: "25,000 USD",
+    },
+    {
+      eventName: "Zero Waste Manufacturing Challenge",
+      description: "Design and implement zero waste manufacturing processes.",
+      award: "15,000 USD",
+    },
+  ]
   return (
-    <VStack spacing={4} align="flex-start">
-      <Heading> Features </Heading>
-      <SimpleGrid
-        columns={[1, 1, 2]}
-        spacing={4}
-        w={"full"}
-        justifyItems="stretch"
-      >
-        {FeatureList.map((feature) => {
-          return <FeatureCard key={feature.name} feature={feature} />
-        })}
-      </SimpleGrid>
-    </VStack>
-  )
-}
-
-interface IFeatureCard {
-  feature: IFeature
-}
-
-const FeatureCard: React.FC<IFeatureCard> = ({ feature }) => {
-  const { account } = useWallet()
-
-  const {
-    state: { network },
-  } = useAppState()
-
-  const { isOpen, onClose, onOpen } = useDisclosure()
-  const isDisabled = feature.requireWallet && (!account || !network)
-
-  return (
-    <Box position={"relative"}>
-      {account && (
-        <feature.featureDialog
-          isOpen={isOpen}
-          onClose={onClose}
-          account={account}
-        />
-      )}
-      {isDisabled && (
-        <Tooltip label="Connect your wallet first" placement="top">
-          <Flex
-            position={"absolute"}
-            right={-2}
-            zIndex={10}
-            top={-2}
-            p={2}
-            rounded="full"
-            bg="orange.500"
-            alignItems={"center"}
-          >
-            <Icon color={"white"} fontSize={"xl"} as={WalletIcon} />
-          </Flex>
-        </Tooltip>
-      )}
-      <StyledCard p={4} h={["auto", "auto", "full"]}>
-        <VStack
-          spacing={2}
-          align="flex-start"
-          justifyContent={"space-between"}
-          h="full"
-        >
-          <Heading fontSize={"2xl"}>{feature.name}</Heading>
-          <Text fontSize={"md"}>{feature.desc}</Text>
-          <Button
-            onClick={onOpen}
-            disabled={isDisabled}
-            colorScheme={"blue"}
-            variant="outline"
-          >
-            Get started
-          </Button>
+    <StyledCard p={4} h={["auto", "auto", "full"]}>
+      <VStack w="full" align="flex-start" spacing={4}>
+        <Heading>Past Sustainability Issued Bounties</Heading>
+        <VStack align="flex-start" spacing={4}>
+          {initialPastEvents.map((event, index) => (
+            <Box
+              key={index}
+              p={4}
+              borderWidth="1px"
+              borderRadius="lg"
+              boxShadow="md"
+            >
+              <Heading as="h3" size="md">
+                {event.eventName}
+              </Heading>
+              <Text>{event.description}</Text>
+              <Text>
+                <strong>Award:</strong> {event.award}
+              </Text>
+            </Box>
+          ))}
         </VStack>
-      </StyledCard>
-    </Box>
+      </VStack>
+    </StyledCard>
   )
 }
 
