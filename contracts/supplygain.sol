@@ -1,8 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
 
-import "./ERC721.sol";
-
 contract Supplygain {
     // Owner is the NGO who is the proposer
     address public owner;
@@ -49,7 +47,9 @@ contract Supplygain {
         emit Payout(msg.sender, amount, sponsorshipId);
     }
 
-    function withdrawUnspentFunds(uint256 campaignId) external {
+    function withdrawUnspentFunds() external {
+        uint256 campaignId;
+        campaignId = 0;
         require(campaignId < campaigns.length, "Invalid sponsorshipId");
         Campaign storage campaign = campaigns[campaignId];
 

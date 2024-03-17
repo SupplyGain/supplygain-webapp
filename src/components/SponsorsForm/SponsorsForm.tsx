@@ -49,7 +49,7 @@ const CampaignForm: React.FC<CampaignFormProps> = ({
           </div>
         </div>
         <div className="field">
-          <label className="label">Reward</label>
+          <label className="label">Reward (VET)</label>
           <div className="control">
             <input
               className="input"

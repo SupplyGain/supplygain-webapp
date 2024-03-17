@@ -2,7 +2,7 @@
 const hre = require("hardhat")
 
 async function main() {
-  const Token = await hre.ethers.getContractFactory("MyVIP180")
+  const Token = await hre.ethers.getContractFactory("Supplygain")
   const token = await Token.deploy("My Token", "MTK", 18)
 
   await token.deployed()
